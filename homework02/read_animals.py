@@ -27,9 +27,9 @@ def new_functionality_breeding(bizarre_animals):
     
     new_animal_head = random.choice([parent1_head, parent2_head])
     new_animal_body = random.choice([parent1_body, parent2_body])
-    new_animal_arms = (parent1_arms + parent2_arms) / 2
-    new_animal_legs = (parent1_legs + parent2_legs) / 2
-    new_animal_tails = (parent1_tails + parent2_tails) / 2
+    new_animal_arms = int(round((parent1_arms + parent2_arms) / 2))
+    new_animal_legs = int(round((parent1_legs + parent2_legs) / 2))
+    new_animal_tails = int(round((parent1_tails + parent2_tails) / 2))
 
     bizarre_animals['animals'].append( {'head': new_animal_head, 'body': new_animal_body, 'arms': new_animal_arms, 'legs': new_animal_legs, 'tails': new_animal_tails, '1st parent': parent1, '2nd parent': parent2} )
 
