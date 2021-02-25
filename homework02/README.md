@@ -50,4 +50,8 @@ docker run --rm -v $PWD:/data zoeclairewatson/bizarre-animals:1.1 read_animals.p
 
 ## Test
 
-Test
+Test type arguments of code by running:
+
+```bash
+python3 test_read_animals.py
+```
