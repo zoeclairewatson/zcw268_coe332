@@ -7,6 +7,8 @@ import sys
 
 #new functionality: to breed 2 random animals and add resulting animal to dictionary
 def new_functionality_breeding(bizarre_animals):
+
+    assert isinstance(bizarre_animals, dict), 'Input to this function should be a dictionary'
     
     #generate elements of a random animal from bizarre_animals dictionary for parent 1
     parent1_index = random.randint(0,19)
