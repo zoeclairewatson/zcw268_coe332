@@ -16,3 +16,4 @@ RUN chmod +rx /code/generate_animals.py && \
 ENV PATH "/code:$PATH"
 
 CMD []
+
