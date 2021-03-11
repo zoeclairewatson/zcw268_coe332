@@ -3,7 +3,7 @@
 
 The purpose of this project is to build upon homework 2, where one script generated a JSON file of assembled animals and another one that read in and printed one animal at random, as well as incorporating a new breeding feature. Here, a Flask app (app.py is the python script) has been created to access the generated JSON file of animals(animals_data.json), including routes to access specific data relating to the animals within the file. A Dockerfile has been written to containerize the Flask app, and a consumer file has been written for peers to consume this data.
 
-##Installation
+## Installation
 
 Install this project by cloning the repository, then navigating to the web directory within the homework03 directory. For example:
 
@@ -13,11 +13,11 @@ cd homework03
 cd web
 ```
 
-##Running the Code
+## Running the Code
 
 This directory already has the JSON file of assembled animals included.
 
-##Docker Image
+## Docker Image
 
 You can build a Docker image using the provided Dockerfile within this web directory. Use the command:
 
@@ -31,7 +31,7 @@ To run the container:
 docker run --name "zoe-animals" -d -p 5037:5000 flask-animals-watson
 ```
 
-##Curl the Port
+## Curl the Port
 
 Route to return all animals:
 
@@ -69,6 +69,6 @@ Route to create one random animal:
 curl localhost:5037/animals/random
 ```
 
-##Consumer File
+## Consumer File
 
 This file provides URLs for others to consume this data.
