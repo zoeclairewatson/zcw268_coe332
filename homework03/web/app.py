@@ -15,7 +15,7 @@ def get_animals():
     return json.dumps(get_data())
 
 def get_data():
-    with open("/home/zcw268/COE332homework/homework03/web/animals_data.json", "r") as json_file:
+    with open("/app/animals_data.json", "r") as json_file:
         bizarre_animals = json.load(json_file)
     return bizarre_animals
 
