@@ -21,7 +21,13 @@ This directory already has the JSON file of assembled animals included.
 You can build a Docker image using the provided docker-compose.yml file within this directory. Use the command:
 
 ```bash
-docker-compose -p zoeclairewatson -d
+docker-compose -p zoeclairewatson build
+```
+
+To run the container:
+
+```bash
+docker-compose -p zoeclairewatson up -d
 ```
 
 ## Curl the Port
@@ -36,6 +42,12 @@ Route to return all animals:
 
 ```bash
 curl localhost:5037/animals
+```
+
+Route to return a randomly generated animal:
+
+```bash
+curl localhost:5037/animals/random
 ```
 
 Route to return all animals with a specified head:
@@ -62,10 +74,22 @@ For example, to return animals with 6 legs:
 curl localhost:5037/animals/legs?num_legs=6
 ```
 
-Route to create one random animal:
+Route to return an animal resulting from breeding:
 
 ```bash
-curl localhost:5037/animals/random
+curl localhost:5037/animals/breeding
+```
+
+Route to select a range of animals by date:
+
+```bash
+curl "localhost:5037/animals/dates?start='<yyyy-mm-dd_hh:mm:ss.ffffff>'&end='<yyyy-mm-dd_hh:mm:ss.ffffff>'"
+```
+
+For example:
+
+```bash
+curl "localhost:5037/animals/dates?start='2021-04-04_05:33:59.903048'&end='2021-04-04_05:33:59.908599'"
 ```
 
 Route to select an animal by UUID:
@@ -77,7 +101,7 @@ curl localhost:5037/animals/uid?uid='<uuid>'
 For example:
 
 ```bash
-curl localhost:5037/animals/uid?uid='db354f4c-3274-4aba-a3fc-b7c8b56ace05'
+curl localhost:5037/animals/uid?uid='2439b5f8-b2a6-4f5f-92a5-e08c7b5bf6e5'
 ```
 
 Route to select animal by UUID and specify updates to its information:

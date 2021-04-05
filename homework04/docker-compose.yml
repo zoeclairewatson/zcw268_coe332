@@ -8,7 +8,7 @@ services:
         ports:
             - 5037:5000
         volumes:
-            - ./data/data_file.json:/data_file.json
+            - ./data/animals_data.json:/data_file.json
 
     redis:
         image: redis:latest
