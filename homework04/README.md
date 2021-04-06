@@ -20,6 +20,7 @@ This directory already has the JSON file of assembled animals included.
 
 You can build a Docker image using the provided docker-compose.yml file within this directory. Use the command:
 
+```
 ```bash
 docker-compose -p zoeclairewatson build
 ```
@@ -31,12 +32,6 @@ docker-compose -p zoeclairewatson up -d
 ```
 
 ## Curl the Port
-
-Route to establish Redis database:
-
-```bash
-curl localhost:5037/establish
-```
 
 Route to return all animals:
 
@@ -56,22 +51,22 @@ Route to return all animals with a specified head:
 curl localhost:5037/animals/head?head='<nameofanimal>'
 ```
 
-For example, to return animals with bunny heads:
+For example, to return animals with bull heads:
 
 ```bash
-curl localhost:5037/animals/head?head='bunny'
+curl localhost:5037/animals/head?head='bull'
 ```
 
 Route to return all animals with a specified number of legs:
 
 ```bash
-curl localhost:5037/animals/legs?num_legs=<integernumber>
+curl localhost:5037/animals/legs?legs=<integernumber>
 ```
 
 For example, to return animals with 6 legs:
 
 ```bash
-curl localhost:5037/animals/legs?num_legs=6
+curl localhost:5037/animals/legs?legs=6
 ```
 
 Route to return an animal resulting from breeding:
@@ -89,7 +84,7 @@ curl "localhost:5037/animals/dates?start='<yyyy-mm-dd_hh:mm:ss.ffffff>'&end='<yy
 For example:
 
 ```bash
-curl "localhost:5037/animals/dates?start='2021-04-04_05:33:59.903048'&end='2021-04-04_05:33:59.908599'"
+curl "localhost:5037/animals/dates?start='2021-04-06_02:45:29.356846'&end='2021-04-06_02:45:29.381785'"
 ```
 
 Route to select an animal by UUID:
@@ -101,38 +96,29 @@ curl localhost:5037/animals/uid?uid='<uuid>'
 For example:
 
 ```bash
-curl localhost:5037/animals/uid?uid='2439b5f8-b2a6-4f5f-92a5-e08c7b5bf6e5'
+curl localhost:5037/animals/uid?uid='84b7d90b-929d-4af7-934f-03f42e1da724'
 ```
 
 Route to select animal by UUID and specify updates to its information:
 
 ```bash
-curl localhost:5037/animals/edit?head='<nameofanimal>'&body='<nameofanimal>'&num_arms=<integernumber>&num_legs=<integernumber>&num_tails=<integernumber>&uid='<uuid>'
+curl "localhost:5037/animals/update?head='<nameofanimal>'&body='<nameofanimal>'&arms=<integernumber>&legs=<integernumber>&tails=<integernumber>&uid=<uuid>"
 ```
 
 For example:
 
 ```bash
-curl localhost:5037/animals/edit?head='snake'&body='clam-bass'&num_arms=4&num_legs=8&num_tails=2&uid='db354f4c-3274-4aba-a3fc-b7c8b56ace05'
-```
-
-Route to return a total count of the animals:
-
-```bash
-curl localhost/5037:/animals/total_count
-```
-
-Route to select a range of animals by date:
-
-```bash
-curl localhost:5037/animals/dates?begin='2021-03-30 02:32:21.976033'&end='2021-03-31 02:32:21.969637'
+curl "localhost:5037/animals/udpate?head='snake'&body='cattle-cub'&arms=4&legs=20&tails=8&uid=84b7d90b-929d-4af7-934f-03f42e1da724"
 ```
 
 Route to delete a range of animals by date:
 
+```bash
+curl "localhost:5037/animals/deletions?start='<yyyy-mm-dd_hh:mm:ss.ffffff>'&end='<yyyy-mm-dd_hh:mm:ss.ffffff>'"
+```
 
 ```bash
-curl localhost:5037/animals/deletion?begin='2021-03-30 02:32:21.976033'&end='2021-03-31 02:32:21.969637'
+curl "localhost:5037/animals/deletions?start='2021-04-06_02:45:29.356846'&end='2021-04-06_02:45:29.381785'"
 ```
 
 Route to return the average number of legs per animal:
@@ -141,7 +127,14 @@ Route to return the average number of legs per animal:
 curl localhost:5037/animals/averagelegs
 ```
 
+Route to return a total count of the animals:
 
-## Consumer File
+```bash
+curl localhost/5037:/animals/total
+```
 
-This file provides URLs for others to consume this data.
+Route to reset Redis database:
+
+```bash
+curl localhost:5037/establish
+```

@@ -100,9 +100,9 @@ def get_animal_head():
 #route to return all animals with a specified number of legs
 @app.route('/animals/legs', methods=['GET'])
 def get_animal_legs_num():
-    num_legs = int(request.args.get('num_legs'))
+    num_legs = int(request.args.get('legs'))
     test = get_data()
-    return json.dumps([x for x in test if x['legs'] == num_legs])
+    return json.dumps([x for x in test if x['legs'] == str(num_legs)])
 
 #route to return an animal resulting from breeding
 @app.route('/animals/breeding', methods=['GET'])
@@ -155,7 +155,7 @@ def get_animal_uid():
     test = get_data()
     return json.dumps([x for x in test if x['uid'] == uid])
 
-#route to edit a creature by passing its UUID and updating qualities
+#testing to debug update route
 @app.route('/animals/testing', methods=['GET'])
 def test_edit_animal():
     
@@ -175,13 +175,24 @@ def test_edit_animal():
 
     test = get_data()
 
-    specified_animal = [x for x in test if x['uid'] == str(animal_uid)]
+    #specified_animal = [x for x in test if x['uid'] == str(animal_uid)]
 
-    rd.hmset(test.index(specified_animal[0]), json.dumps(update))
+    #rd.hmset(test.index(specified_animal[0]), json.dumps(update))
+   
+    for x in range(0, len(test)):
     
-    test = get_data()
+        if(test[x]['uid'] == str(animal_uid)):
 
-    return json.dumps([x for x in test if x['uid'] == str(animal_uid)])
+            return json.dumps(update)
+
+        #else:
+            #return json.dumps(update)
+ 
+    #test = get_data()
+
+    #return json.dumps([x for x in test if x['uid'] == str(animal_uid)])
+
+    #return json.dumps(update)
 
 #route to edit a creature by passing its UUID and updating qualities
 @app.route('/animals/update', methods=['GET'])
@@ -298,10 +309,15 @@ def average_legs():
 
         rd = redis.StrictRedis(host= 'redis', port=6379, db=8)
 
-        x_legs = int(rd.hget(x, 'legs'))
-        legs_count = legs_count + x_legs
+        x_legs = rd.hget(x, 'legs')
+
+        if (str(x_legs) != 'None'):
+  
+            legs_count = legs_count + int(x_legs)
 
     average_legs = str((legs_count) / (animal_count))
+
+    return average_legs
 
 #route to return the total count of animals
 @app.route('/animals/total', methods=['GET'])
