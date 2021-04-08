@@ -159,4 +159,4 @@ Output:
 Hello, Zoe Watson from IP 10.244.10.21!
 ```
 
--> These outputs do match those of part B, with the addition of the associated IP addresses for each pod.
+-> These outputs match those of part B, with the addition of the associated IP addresses for each pod, which match the IPs found when using kubectl to get all pods in the deployment. 
