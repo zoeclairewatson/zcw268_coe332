@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-b
+  labels:
+    greeting: personalized
+spec:
+  containers:
+    - name: hello
+      image: ubuntu:18.04
+      env:
+        - name: NAME_FIRST
+          value: "Zoe"
+        - name: NAME_LAST
+          value: "Watson"
+      command: ['sh', '-c', 'echo "Hello, $(NAME_FIRST) $(NAME_LAST)!" && sleep 3600']
+

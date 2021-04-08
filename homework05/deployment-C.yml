@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-c
+  labels:
+    greeting: personalized
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-c
+  template:
+    metadata:
+      labels:
+        app: hello-c
+    spec:
+      containers:
+        - name: hello
+          image: ubuntu:18.04
+          env:
+            - name: NAME_FIRST
+              value: "Zoe"
+            - name: NAME_LAST
+              value: "Watson"
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          command: ['sh', '-c', 'echo "Hello, $(NAME_FIRST) $(NAME_LAST) from IP $(POD_IP)!" && sleep 3600']
