@@ -93,6 +93,10 @@ To delete the pod:
 kubectl delete pods hello-b
 ```
 
+```bash
+pod "hello-b" deleted
+```
+
 
 ## Part C
 
@@ -129,6 +133,9 @@ hello-c-74b8bdd597-m6dh4   1/1     Running   0          10m   10.244.10.21   c00
 
 To check the logs of each pod:
 
+
+(1):
+
 ```bash
 kubectl logs hello-c-74b8bdd597-2l2qc
 ```
@@ -139,6 +146,9 @@ Output:
 Hello, Zoe Watson from IP 10.244.4.156!
 ```
 
+
+(2):
+
 ```bash
 kubectl logs hello-c-74b8bdd597-jxfd9
 ``` 
@@ -148,6 +158,9 @@ Output:
 ```bash
 Hello, Zoe Watson from IP 10.244.3.200!
 ```
+
+
+(3):
 
 ```bash
 kubectl logs hello-c-74b8bdd597-m6dh4
