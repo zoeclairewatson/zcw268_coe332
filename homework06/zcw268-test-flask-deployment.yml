@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zcw268-test-flask-deployment
+  labels:
+    app: zcw268-test-flask
+    username: zcw268
+    env: test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: zcw268-test-flask
+  template:
+    metadata:
+      labels:
+        app: zcw268-test-flask
+        username: zcw268
+        env: test
+    spec:
+      containers:
+        - name: zcw268-test-animals
+          imagePullPolicy: Always
+          image: zoeclairewatson/zoeclairewatson_web
+          env:
+          - name: FLASK_APP
+            value: "app.py"
+          ports:
+          - name: http
+            containerPort: 5000

@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zcw268-test-pvc-deployment
+  labels:
+    app: zcw268-test-redis
+    username: zcw268
+    env: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zcw268-test-redis
+  template:
+    metadata:
+      labels:
+        app: zcw268-test-redis
+        username: zcw268
+        env: test
+    spec:
+      containers:
+        - name: zcw268-test-animals
+          imagePullPolicy: Always
+          image: redis:5.0.0
+          volumeMounts:
+          - name: zcw268-test-pvc-data
+            mountPath: "/data"
+      volumes:
+      - name: zcw268-test-pvc-data
+        persistentVolumeClaim:
+          claimName: zcw268-test-pvc-data
