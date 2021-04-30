@@ -8,4 +8,4 @@ def execute_job(jid):
     time.sleep(15)
     jobs.update_job_status(jid, 'complete')
 
-do_work()
+execute_job()
