@@ -150,14 +150,14 @@ Repeat the process for deploying the kubernetes test environment, using each pro
 
 In summary:
 
--Create a Persistent Volume Claim for the Redis database\n
--Create a Redis Deployment\n
--Create a Redis Service\n
--Retrieve the new Redis Service IP\n
--Manually provide the flask and worker deployments with this new IP\n
--Create a Flask Deployment\n
--Create a Flask Service\n
--Create a Worker Deployment\n
+-Create a Persistent Volume Claim for the Redis database\
+-Create a Redis Deployment\
+-Create a Redis Service\
+-Retrieve the new Redis Service IP\
+-Manually provide the flask and worker deployments with this new IP\
+-Create a Flask Deployment\
+-Create a Flask Service\
+-Create a Worker Deployment\
 -Recongifure existing NodePort Service to match the spec.selector with the ```kz-prod-flask``` app label for the api production environment
 
 
