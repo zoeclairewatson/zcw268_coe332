@@ -1,22 +1,26 @@
 
 # Instructions for deploying app (how an operator should deploy system on a k8s cluster)
 
-
-########### info for cloning repo
-
-########### docker pull images
 	
 Install this project by cloning the repository, then navigating to the FinalProject directory. For example:
 
 ```bash
-git clone blahblahblah
+git clone https://github.com/zoeclairewatson/zcw268_coe332.git 
 cd FinalProject
+```
+
+Pull the existing image from DockerHub:
+
+```bash
+docker pull zoeclairewatson/final:latest
 ```
 
 
 ## Deploying Flask API Test Environment to Kubernetes
 
-Within this FinalProject, navigate to 
+Within this FinalProject, navigate to the test redis directory within the deploy directory:
+
+```bash
 cd deploy/test/redis
 ```
 
@@ -39,6 +43,8 @@ kubectl apply -f test-redis-service.yml
 ```
 
 Now that the Redis Service has been created, there are manual changes that need to be executed within the api and worker deployments to update the Redis Service IP. First, check the Redis service Cluster-IP using:
+
+Note: This procedure of manually updating the Redis Service IP will need to be re-executed when deploying the production environment for the new Production Redis Service IP - this selector can be adjusted to "app=kz-prod-redis"
 
 ```bash
 kubectl get services --selector "app=kz-test-redis"
@@ -106,10 +112,20 @@ vim service.yml
 ```
 
 Create NodePort Service:
-
-note: manually check service.yml to ensure that spec.selector matches the ```kz-test-flask``` label for the api test environment
-
 (this will later be used to download image to browser)
+
+Manually check service.yml to ensure that spec.selector matches the ```kz-test-flask``` app label for the api test environment.
+Note: This procedure of manually checking/updating the selector will need to be re-executed when deploying the production environment - this selector can be adjusted to "app=kz-prod-redis" to match the label for the api production environment
+
+```bash
+...
+
+spec:
+  selector:
+    app: kz-test-flask
+
+...
+```
 
 ```bash
 kubectl apply -f service.yml
@@ -138,11 +154,11 @@ In summary:
 -Create a Redis Deployment
 -Create a Redis Service
 -Retrieve the new Redis Service IP
--Manually provide the flask and worker deployments with this IP
+-Manually provide the flask and worker deployments with this new IP
 -Create a Flask Deployment
 -Create a Flask Service
 -Create a Worker Deployment
--Recongifure existing NodePort Service to match the spec.selector with the ```kz-prod-flask``` label for the api production environment
+-Recongifure existing NodePort Service to match the spec.selector with the ```kz-prod-flask``` app label for the api production environment
 
 
 
