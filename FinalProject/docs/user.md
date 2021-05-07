@@ -232,7 +232,13 @@ Now to view the graphs from the jobs. To do this you will use a browser UI. Open
 https://isp-proxy.tacc.utexas.edu/<user-namespace>/download/job.<jid>
 ```
 This will automatically download the png for the graphs. You can then open them in any image viewer program on your desktop. 
-Here is an example of what they should look like:
+Images should look like the following:
+
+job_type of dates:
+
+![alt text](https://github.com/zoeclairewatson/zcw268_coe332/blob/29789e55ed4bdaece829d0ea3c7584b196cc9eaf/FinalProject/docs/job.d22618ab-c2b7-43b7-b087-93cf6badcce9.png)
 
 
-![alt text](https://github.com/zoeclairewatson/FINAL/blob/9801692efc6718fecbe613ad06040ffb4bf86681/finalpractice/docs/image.png)
+job_type of animal_type:
+
+![alt text](https://github.com/zoeclairewatson/zcw268_coe332/blob/29789e55ed4bdaece829d0ea3c7584b196cc9eaf/FinalProject/docs/job.2adc69d2-6364-46ff-980a-9a97f821c040.png)

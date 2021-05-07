@@ -42,7 +42,7 @@ Create a Service for the Redis database:
 kubectl apply -f test-redis-service.yml
 ```
 
-Now that the Redis Service has been created, there are manual changes that need to be executed within the api and worker deployments to update the Redis Service IP. First, check the Redis service Cluster-IP using:
+Now that the Redis Service has been created, there are manual changes that need to be executed within the api and worker deployments to update the Redis Service IP. First, check the Redis service Cluster-IP using:\
 
 Note: This procedure of manually updating the Redis Service IP will need to be re-executed when deploying the production environment for the new Production Redis Service IP - this selector can be adjusted to "app=kz-prod-redis"
 
@@ -111,10 +111,10 @@ cd ../../tmp
 vim service.yml
 ```
 
-Create NodePort Service:
-(this will later be used to download image to browser)
+Create NodePort Service:\
+(this will later be used to download image to browser)\
 
-Manually check service.yml to ensure that spec.selector matches the ```kz-test-flask``` app label for the api test environment.
+Manually check service.yml to ensure that spec.selector matches the ```kz-test-flask``` app label for the api test environment.\
 Note: This procedure of manually checking/updating the selector will need to be re-executed when deploying the production environment - this selector can be adjusted to "app=kz-prod-redis" to match the label for the api production environment
 
 ```bash
