@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kz-prod-worker-deployment
+  labels:
+    app: kz-prod-worker
+    username: kz
+    env: prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kz-prod-worker
+  template:
+    metadata:
+      labels:
+        app: kz-prod-worker
+        username: kz
+        env: prod
+    spec:
+      containers:
+        - name: kz-prod-worker
+          imagePullPolicy: Always
+          image: zoeclairewatson/final:latest
+          command: ["python", "worker.py"]
+          env:
+          - name: WORKER_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+          - name: REDIS_IP
+            value: "10.105.20.241"          
